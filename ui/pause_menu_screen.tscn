@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://vti6olep8drc"]
+
+[ext_resource type="Script" path="res://ui/pause_menu_screen.gd" id="1_rerqm"]
+[ext_resource type="Texture2D" uid="uid://c67gwy5oqblb0" path="res://ui/environment-preview.png" id="1_tmxd1"]
+[ext_resource type="Theme" uid="uid://ddh0eq44rjeer" path="res://ui/theme/game_theme.tres" id="2_mabto"]
+[ext_resource type="Texture2D" uid="uid://dgkne6dyef061" path="res://ui/player-run-4.png" id="3_blm1g"]
+[ext_resource type="Texture2D" uid="uid://x76er0dg6nff" path="res://ui/crab-walk-1.png" id="4_uhhgq"]
+
+[node name="PauseMenuScreen" type="CanvasLayer"]
+process_mode = 3
+layer = 2
+script = ExtResource("1_rerqm")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.705882, 0.262745, 0.737255, 1)
+offset_right = 1056.0
+offset_bottom = 352.0
+texture = ExtResource("1_tmxd1")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_mabto")
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="ContinueButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "CONTINUE"
+
+[node name="MainMenuButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "MAIN MENU
+"
+
+[node name="Player-run-4" type="Sprite2D" parent="."]
+position = Vector2(120, 136)
+texture = ExtResource("3_blm1g")
+
+[node name="Crab-walk-1" type="Sprite2D" parent="."]
+position = Vector2(289, 102)
+texture = ExtResource("4_uhhgq")
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
